@@ -1,0 +1,11 @@
+.header {
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 3%;
+}
+
+.text-adj {
+    font-size: calc(16px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
