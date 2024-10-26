@@ -1,18 +1,33 @@
 import React from "react";
 import styles from "./Main.css";
+import img1 from "../../asstes/images/cloudy.png"
+import img2 from "../../asstes/images/sun.png"
 
-function Main() {
+
+const Main = ({data}) => {
+
+    const getImageForWeather = (weather) => {
+        switch (weather) {
+            case "Clouds":
+              return img1;
+            case "Sunny":
+              return img2;
+            default:
+              return img1; 
+          }
+    };
+
+    const weatherImg = getImageForWeather(data.weather[0].main);
+
     return (
-        <div className="d-flex main-background">
-            <div className="row">
+        <div className="d-flex justify-content-center main-background">
+            <div className="row weather-card">
                 <div className="col">
-                    <div className="weather-card">
-                        <div className="top">
-                            <p>10°C</p>
-                        </div>
-                    </div>
+                    <p>test</p>
                 </div>
-                <div className="col"></div>
+                <div className="col">
+                    <img src={img1} alt="weather-icon"></img>
+                </div>
             </div>
         </div>
     )
