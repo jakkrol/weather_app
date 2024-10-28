@@ -6,8 +6,8 @@ function Menu() {
 
         <div className="col-lg d-none d-md-block">
             <div>
-                <span className="p-4">O mnie</span>
-                <span className="p-4">Kontakt</span>
+                <span className="p-4">TEST</span>
+                <span className="p-4">TEST</span>
             </div>
         </div>
        {/* Menu rozwijane */}
