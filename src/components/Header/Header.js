@@ -5,7 +5,7 @@ import LocationSearcher from "./LocationSearcher";
 
 function Header({onTextChange}) {
     return (
-        <header className="container-fluid">
+        <header className="container-fluid ">
             <div className="row">
                 <div className="col-3 m-auto">
                 <span className="text-adj">Giga Pogoda</span>
@@ -15,7 +15,7 @@ function Header({onTextChange}) {
                 </div>
             </div>
             <div className="row">
-                <div className="col">
+                <div className="col d-flex justify-content-center align-items-center">
                     <LocationSearcher onTextChange={onTextChange}/>
                 </div>
             </div>

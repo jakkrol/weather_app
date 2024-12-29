@@ -2,6 +2,7 @@ import './App.css';
 import React, {useState} from 'react';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
+import searchIcon from './asstes/images/search.png';
 
 function App() {
   const [location, setLocation] = useState('');
@@ -38,9 +39,20 @@ function App() {
 
   return (
     <div className="App">
-      <Header onTextChange={HandleLocationSet}/>
-      {weatherData && <Main data={weatherData}/>}
-      <button style={{"height" : "50px", "width" : "100px"}} onClick={HandleOnClick}></button>
+      <div className='container'>
+        <Header onTextChange={HandleLocationSet}/>
+        {weatherData && <Main data={weatherData}/>}
+        <button   style={{
+          backgroundImage: `url(${searchIcon})`,
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          border: 'none',
+          width: '35px', // Adjust as needed
+          height: '35px', // Adjust as needed
+          cursor: 'pointer'
+  }} onClick={HandleOnClick}></button>
+      </div>
     </div>
   );
 }

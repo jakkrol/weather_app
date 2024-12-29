@@ -1,11 +1,20 @@
 .header {
-    height: 80px;
-    display: flex;
-    justify-content: start;
     align-items: center;
-    padding: 3%;
+    justify-content: center;
 }
 
 .text-adj {
     font-size: calc(16px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.search-button{
+    background-image: url(./../../asstes/images/search.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(182, 176, 176) !important;
+    width: 35px;
+}
+.search-box{
+    max-width: 800px;
 }

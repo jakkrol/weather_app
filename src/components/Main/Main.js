@@ -26,14 +26,14 @@ const Main = ({data}) => {
         //console.log(data);
         const weatherImg = getImageForWeather(data.weather[0].main);
         return ( 
-            <div className="d-flex justify-content-center main-background">
-                <div className="row weather-card">
-                    <div className="col">
+            <div className="d-flex justify-content-center">
+                <div className="row weather-card text-adj m-1">
+                    <div className="col-12 col-sm-7 order-sm-1 order-2">
                         <p>{data.name}</p>   
                         <p>Status: {data.weather[0].main}</p>
                         <p>Temperature: {data.main.temp}℃</p>
                     </div>
-                    <div className="col">
+                    <div className="col-12 col-sm-5 order-sm-2 order-1 justify-content-center align-items-center d-flex">
                         <img src={weatherImg} alt="weather-icon"></img>
                     </div>
                 </div>
