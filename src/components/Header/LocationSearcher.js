@@ -1,25 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-function LocationSearcher({ onTextChange }) {
-  const handleInputChange = (event) => {
-    const newText = event.target.value;
-    onTextChange(newText); // Call the callback from App.js
-  };
+
+
+function LocationSearcher({ onClick }) {
+    var newText = '';
+
+    const handleInputChange = (event) => {
+      newText = event.target.value;
+      //onTextChange(newText); // Call the callback from App.js
+}
+
+const handleDataSender = () => {
+  console.log("KLIK");
+  onClick(newText); // Call the parent function with the current input value
+};
 
   return (
-    // <div className="input-group input-group-sm mb-3">
-    // {/* <div class="input-group-prepend">
-    //     <span class="input-group-text" id="inputGroup-sizing-sm">Localization</span>
-    // </div> */}
-    // <input type="text" placeholder='Localization' className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-    //     onChange={handleInputChange}
-        
-    //   />
-    // </div>
-
     <div className='input-group mb-3 search-box'>
         <input type="text" placeholder='Localization' className="form-control" aria-label="Search" onChange={handleInputChange}/>
-        <button type='button' className='btn search-button'></button>
+        <button type='button' className='btn search-button' onClick={handleDataSender}></button>
     </div>
   );
 }

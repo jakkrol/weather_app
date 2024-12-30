@@ -5,21 +5,23 @@ import Main from './components/Main/Main';
 import searchIcon from './asstes/images/search.png';
 
 function App() {
-  const [location, setLocation] = useState('');
+  //const [location, setLocation] = useState('');
 
   const [weatherData, setWeatherResponse] = useState(null);
   const [forecastData, setForecastResponse] = useState(null);
   //const currentWeatherFetch = fetch('https://api.openweathermap.org/data/2.5/weather?lat=49.63326874075631&lon=20.473368663221848&appid=6276eea278f6f63ee4850b553409899c');
 
 
-  const HandleLocationSet = (newLocation) => {
-    setLocation(newLocation);
-  }
+  // const HandleLocationSet = (newLocation) => {
+    //DO ODWOLANIA
+  // }
 
-  const HandleOnClick = () =>{
+  const HandleOnClick = (newLocation) =>{
+    // setLocation(newLocation);
+    // console.log("Lokacja" + location)
     console.log("LATA JAK SKURWYSYN");
-    const currentWeatherFetch = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=6276eea278f6f63ee4850b553409899c&units=metric`);
-    const currentForecastFetch = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Łukowica&appid=6276eea278f6f63ee4850b553409899c&units=metric`);
+    const currentWeatherFetch = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${newLocation}&appid=6276eea278f6f63ee4850b553409899c&units=metric`);
+    const currentForecastFetch = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${newLocation}&appid=6276eea278f6f63ee4850b553409899c&units=metric`);
   
   
     Promise.all([currentWeatherFetch, currentForecastFetch])
@@ -39,19 +41,13 @@ function App() {
 
   return (
     <div className="App">
-      <div className='container'>
-        <Header onTextChange={HandleLocationSet}/>
-        {weatherData && <Main data={weatherData}/>}
-        <button   style={{
-          backgroundImage: `url(${searchIcon})`,
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          border: 'none',
-          width: '35px', // Adjust as needed
-          height: '35px', // Adjust as needed
-          cursor: 'pointer'
-  }} onClick={HandleOnClick}></button>
+      <div className='container vh-100 d-flex flex-column'>
+        <div className='row'>
+          <Header onClick={HandleOnClick}/>
+        </div>
+        <div className='row flex-grow-1  align-items-start mt-5'>
+          {weatherData && <Main data={weatherData}/>}
+        </div>
       </div>
     </div>
   );

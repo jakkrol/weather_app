@@ -1,32 +1,36 @@
 import React from "react";
 import styles from "./Main.css";
-import img1 from "../../asstes/images/clear.png"
-import img2 from "../../asstes/images/sun.png"
-import img3 from "../../asstes/images/heavy-rain.png"
-import img4 from "../../asstes/images/rain_sun.png"
-import img5 from "../../asstes/images/cloud.png"
+import clear from "../../asstes/images/clear.png"
+import sun from "../../asstes/images/sun.png"
+import rain from "../../asstes/images/heavy-rain.png"
+import rain_sun from "../../asstes/images/rain_sun.png"
+import cloud from "../../asstes/images/cloud.png"
+import fog from "../../asstes/images/fog.png"
 
 const Main = ({data}) => {
 
     const getImageForWeather = (weather) => {
         switch (weather) {
             case "Clouds":
-              return img5;
+                return cloud;
             case "Sunny":
-              return img2;
+                return sun;
             case "Rainy":
-              return img3; 
+                return rain; 
             case "Clear":
-              return img1;
+                return clear;
+            case "Fog":
+                return fog;
             default:
-              return img1; 
+                return clear; 
           }
     };
+
     try{
         //console.log(data);
         const weatherImg = getImageForWeather(data.weather[0].main);
         return ( 
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center align-items-center">
                 <div className="row weather-card text-adj m-1">
                     <div className="col-12 col-sm-7 order-sm-1 order-2">
                         <p>{data.name}</p>   

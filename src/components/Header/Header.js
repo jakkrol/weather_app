@@ -3,7 +3,7 @@ import styles from './Header.css';
 import Menu from "./Menu";
 import LocationSearcher from "./LocationSearcher";
 
-function Header({onTextChange}) {
+function Header({onClick}) {
     return (
         <header className="container-fluid ">
             <div className="row">
@@ -14,9 +14,9 @@ function Header({onTextChange}) {
                     <Menu/>
                 </div>
             </div>
-            <div className="row">
+            <div className="row mt-4">
                 <div className="col d-flex justify-content-center align-items-center">
-                    <LocationSearcher onTextChange={onTextChange}/>
+                    <LocationSearcher onClick={onClick}/>
                 </div>
             </div>
         </header>
