@@ -19,7 +19,7 @@ function App() {
   const HandleOnClick = (newLocation) =>{
     // setLocation(newLocation);
     // console.log("Lokacja" + location)
-    console.log("LATA JAK SKURWYSYN");
+    console.log("LATA JAK SKURWYSYN:" + newLocation);
     const currentWeatherFetch = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${newLocation}&appid=6276eea278f6f63ee4850b553409899c&units=metric`);
     const currentForecastFetch = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${newLocation}&appid=6276eea278f6f63ee4850b553409899c&units=metric`);
   
@@ -46,7 +46,8 @@ function App() {
           <Header onClick={HandleOnClick}/>
         </div>
         <div className='row flex-grow-1  align-items-start mt-5'>
-          {weatherData && <Main data={weatherData}/>}
+          {forecastData && weatherData && <Main data={weatherData} forecast={forecastData}/>}
+          
         </div>
       </div>
     </div>
