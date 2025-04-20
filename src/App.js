@@ -40,7 +40,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App d-flex vh-100">
       <div className='container vh-100 d-flex flex-column'>
         <div className='row'>
           <Header onClick={HandleOnClick}/>

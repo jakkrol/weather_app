@@ -3,14 +3,15 @@ import React, {useEffect, useState} from 'react';
 
 var newText = '';
 
-function LocationSearcher({ onClick }) {
+function LocationSearcher({ callback }) {
 
   const handleInputChange = (event) => {
     newText = event.target.value;
   }
-  const handleKeyPress = (event) => {
+  const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      handleDataSender();
+      callback(newText);
+      //handleDataSender();
     }
   };
 
@@ -18,14 +19,14 @@ function LocationSearcher({ onClick }) {
   //   window.addEventListener("keydown", handleKeyPress);
   // })
 
-  const handleDataSender = () => {
-    onClick(newText); // Call the parent function with the current input value
-  };
+  // const handleDataSender = () => {
+  //   onClick(newText); // Call the parent function with the current input value
+  // };
 
   return (
     <div className='input-group mb-3 search-box'>
-        <input type="text" placeholder='Localization' className="form-control" aria-label="Search" onChange={handleInputChange} onKeyDown={handleKeyPress}/>
-        <button type='button' className='btn search-button' onClick={handleDataSender}></button>
+        <input type="text" placeholder='Localization' className="form-control" aria-label="Search" onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+        <button type='button' className='btn search-button' onClick={()=>callback(newText)}></button>
     </div>
   );
 

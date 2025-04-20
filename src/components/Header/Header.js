@@ -16,7 +16,7 @@ function Header({onClick}) {
             </div>
             <div className="row mt-4">
                 <div className="col d-flex justify-content-center align-items-center">
-                    <LocationSearcher onClick={onClick}/>
+                    <LocationSearcher callback={onClick}/>
                 </div>
             </div>
         </header>
