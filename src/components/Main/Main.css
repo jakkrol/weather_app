@@ -15,7 +15,27 @@ p{
   font-size: calc(16px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
-img {
+.img-main {
   max-width: 150px;
   width: 100%;
+}
+
+.img-forecast {
+  max-width: 30px;
+  width: 100%;
+}
+
+.futher-days{
+  border-bottom:solid 1px rgb(166, 166, 166);
+}
+
+.forecastDay{
+  display: inline-block;
+  margin-left: 2px;
+  border-right: solid 1px rgb(146, 144, 144) ;
+  padding: 10px;
+}
+
+.collapsing-item {
+  background-color: #082f49;
 }

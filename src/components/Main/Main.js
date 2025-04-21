@@ -57,7 +57,7 @@ const Main = ({data, forecast}) => {
                             <p>Temperature: {data.main.temp}℃</p>
                         </div>
                         <div className="col-12 col-sm-5 order-sm-2 order-1 justify-content-center align-items-center d-flex">
-                            <img src={weatherImg} alt="weather-icon"></img>
+                            <img src={weatherImg} alt="weather-icon" className="img-main"></img>
                         </div>
                     </div>
                 </div>
@@ -66,26 +66,38 @@ const Main = ({data, forecast}) => {
                 {/* forecast */}
                 <div>
                     {forecast.list
-                        .filter(item => item.dt_txt.split(" ")[0] !== currentDate)
-                        .map((item, index) => (
+                        .filter(item => item.dt_txt.split(" ")[0] !== currentDate && item.dt_txt.split(" ")[1] === "12:00:00")
+                        .map((item, index) => {
+                            const _dayOfWeek = (new Date(item.dt_txt).toLocaleDateString("locale", { weekday: 'long'}));
+                            const dayOfWeek = _dayOfWeek.charAt(0).toLocaleUpperCase() + _dayOfWeek.slice(1);
+                            return (
                             <div key={index}>
                                 <div
                                     className="futher-days"
                                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    {item.dt_txt}
+                                    {dayOfWeek}
                                 </div>
-                                {openIndex === index && (
-                                    <div className="collapse show"> {/* className optional here */}
-                                        <p>"HUJ"</p>
-                                        <p>Temp: {item.main.temp}℃</p>
-                                        <p>Status: {item.weather[0].main}</p>
-                                        {/* Add more info here if you want */}
-                                    </div>
-                                )}
+
+                                    {openIndex === index && (
+                                        <div className="collapsing-item">
+                                            {forecast.list
+                                                .filter(_item => _item.dt_txt.split(" ")[0] === item.dt_txt.split(" ")[0] && !["00:00:00", "03:00:00"].includes(_item.dt_txt.split(" ")[1]))
+                                                .map((_item, _index)=> (
+                                                    <div key={_index} className="forecastDay el">
+                                                        <p>{(_item.dt_txt.split(" ")[1]).split(":")[0] + ":" + (_item.dt_txt.split(" ")[1]).split(":")[1]}</p>
+                                                        <p>{_item.main.temp}℃</p>
+                                                        <p><img src={getImageForWeather(_item.weather[0].main)} className="img-forecast"></img>{_item.weather[0].main}</p>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
+                                    )}
+
                             </div>
-                        ))}
+                            )
+                        })}
                 </div>
             </div>
         )   
