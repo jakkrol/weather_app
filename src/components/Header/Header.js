@@ -11,12 +11,12 @@ function Header({onClick}) {
                 <span className="text-adj">Giga Pogoda</span>
                 </div>  
                 <div className="col-9 m-auto">
-                    <Menu/>
+                    {/* <Menu/> */}
                 </div>
             </div>
-            <div className="row mt-4">
-                <div className="col d-flex justify-content-center align-items-center">
-                    <LocationSearcher callback={onClick}/>
+            <div className="row mt-4 ox-2">
+                <div className="col-12  mx-auto">
+                    <LocationSearcher callback={onClick} />
                 </div>
             </div>
         </header>

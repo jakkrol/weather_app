@@ -10,7 +10,7 @@ import snow from "../../asstes/images/snowy.png"
 
 var displayCounter = 0;
 const Main = ({data, forecast}) => {
-    const [openIndex, setOpenIndex] = useState(null); // this will track which item is open
+    const [openIndex, setOpenIndex] = useState([]); // this will track which item is open
 
     const date = new Date();
     let day = String(date.getDate()).padStart(2, '0');
@@ -74,13 +74,22 @@ const Main = ({data, forecast}) => {
                             <div key={index}>
                                 <div
                                     className="futher-days"
-                                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                                    onClick={() => {
+                                        const tempOpenIndex = [...openIndex];
+                                        const itemIndex = openIndex.indexOf(index);
+                                        if(itemIndex === -1){
+                                            tempOpenIndex.push(index);
+                                        }else{
+                                            tempOpenIndex.splice(itemIndex, 1);
+                                        }
+                                        setOpenIndex(tempOpenIndex);
+                                    }}
                                     style={{ cursor: 'pointer' }}
                                 >
                                     {dayOfWeek}
                                 </div>
 
-                                    {openIndex === index && (
+                                    {openIndex.includes(index) && (
                                         <div className="collapsing-item">
                                             {forecast.list
                                                 .filter(_item => _item.dt_txt.split(" ")[0] === item.dt_txt.split(" ")[0] && !["00:00:00", "03:00:00"].includes(_item.dt_txt.split(" ")[1]))

@@ -4,7 +4,7 @@
   border-radius: 15px;
   font-size: 20px;
   white-space: nowrap;
-  background-color: #082f49;
+  background-color: #0c3b5b;
   padding: 5px;
 }
 p{
@@ -26,16 +26,24 @@ p{
 }
 
 .futher-days{
-  border-bottom:solid 1px rgb(166, 166, 166);
+  /* border-bottom:solid 1px rgb(166, 166, 166); */
+  background-color: #0d4469;
+  margin: 5px 5px 5px 0px;
+  padding: 2px;
+  padding-left: 10px;
+  border-radius: 15px;
+  box-shadow:  1px 1px 5px gray;
 }
 
 .forecastDay{
   display: inline-block;
-  margin-left: 2px;
-  border-right: solid 1px rgb(146, 144, 144) ;
+  border: solid 1px rgb(146, 144, 144) ;
   padding: 10px;
+  background-color: #0c3b5b;
+  width: 150px;
+  margin-left: 5px;
 }
 
-.collapsing-item {
+/* .collapsing-item {
   background-color: #082f49;
-}
+} */

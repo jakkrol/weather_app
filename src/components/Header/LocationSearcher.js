@@ -24,9 +24,13 @@ function LocationSearcher({ callback }) {
   // };
 
   return (
-    <div className='input-group mb-3 search-box'>
-        <input type="text" placeholder='Localization' className="form-control" aria-label="Search" onChange={handleInputChange} onKeyDown={handleKeyDown}/>
-        <button type='button' className='btn search-button' onClick={()=>callback(newText)}></button>
+    <div className='container header'>
+      <div className='col-12'>
+        <div className='input-group mb-3 search-box'>
+          <input type="text" placeholder='Localization' className="form-control" aria-label="Search" onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+          <button type='button' className='btn search-button' onClick={()=>callback(newText)}></button>
+        </div>
+      </div>
     </div>
   );
 
