@@ -43,7 +43,7 @@ const Main = ({data, forecast}) => {
 
     try{
         console.log(data);
-        console.log(forecast);
+        //console.log(forecast);
         
         const weatherImg = getImageForWeather(data.weather[0].main);
         return ( 
@@ -52,7 +52,7 @@ const Main = ({data, forecast}) => {
                 <div className="d-flex justify-content-center align-items-center">
                     <div className="row weather-card text-adj m-1">
                         <div className="col-12 col-sm-7 order-sm-1 order-2">
-                            <p>{data.name}</p>   
+                            <p>{data.name}, {data.sys.country}</p>   
                             <p>Status: {data.weather[0].main}</p>
                             <p>Temperature: {data.main.temp}℃</p>
                         </div>
