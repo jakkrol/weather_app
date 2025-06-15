@@ -62,11 +62,11 @@ const Main = ({data, forecast}) => {
                     </div>
                 </div>
 
-
+{/* item.dt_txt.split(" ")[0] !== currentDate && */}
                 {/* forecast */}
                 <div>
                     {forecast.list
-                        .filter(item => item.dt_txt.split(" ")[0] !== currentDate && item.dt_txt.split(" ")[1] === "12:00:00")
+                        .filter(item => item.dt_txt.split(" ")[1] === "12:00:00")
                         .map((item, index) => {
                             const _dayOfWeek = (new Date(item.dt_txt).toLocaleDateString("locale", { weekday: 'long'}));
                             const dayOfWeek = _dayOfWeek.charAt(0).toLocaleUpperCase() + _dayOfWeek.slice(1);
