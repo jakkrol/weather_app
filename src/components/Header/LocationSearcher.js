@@ -10,7 +10,7 @@ function LocationSearcher({ callback }) {
   }
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      callback(newText.trimEnd());
+      callback(newText.trim());
       //handleDataSender();
     }
   };
