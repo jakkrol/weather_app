@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import searchIcon from './asstes/images/search.png';
@@ -10,6 +10,33 @@ function App() {
   const [weatherData, setWeatherResponse] = useState(null);
   const [forecastData, setForecastResponse] = useState(null);
   //const currentWeatherFetch = fetch('https://api.openweathermap.org/data/2.5/weather?lat=49.63326874075631&lon=20.473368663221848&appid=6276eea278f6f63ee4850b553409899c');
+
+  useEffect(() => {
+  if (weatherData) {
+    localStorage.setItem("weatherData", JSON.stringify(weatherData));
+  }
+}, [weatherData]);
+
+useEffect(() => {
+  if (forecastData) {
+    localStorage.setItem("forecastData", JSON.stringify(forecastData));
+  }
+}, [forecastData]);
+
+
+useEffect(() => {
+  const savedWeather = localStorage.getItem("weatherData");
+  const savedForecast = localStorage.getItem("forecastData");
+
+  if (savedWeather) {
+    setWeatherResponse(JSON.parse(savedWeather));
+  }
+
+  if (savedForecast) {
+    setForecastResponse(JSON.parse(savedForecast));
+  }
+}, []);
+
 
 
   // const HandleLocationSet = (newLocation) => {
