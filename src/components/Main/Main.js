@@ -66,7 +66,7 @@ const Main = ({data, forecast}) => {
                 {/* forecast */}
                 <div>
                     {forecast.list
-                        .filter(item => item.dt_txt.split(" ")[1] === "12:00:00")
+                        .filter(item => item.dt_txt.split(" ")[1] === "21:00:00")
                         .map((item, index) => {
                             const _dayOfWeek = (new Date(item.dt_txt).toLocaleDateString("locale", { weekday: 'long'}));
                             const dayOfWeek = _dayOfWeek.charAt(0).toLocaleUpperCase() + _dayOfWeek.slice(1);
@@ -92,7 +92,7 @@ const Main = ({data, forecast}) => {
                                     {openIndex.includes(index) && (
                                         <div className="collapsing-item">
                                             {forecast.list
-                                                .filter(_item => _item.dt_txt.split(" ")[0] === item.dt_txt.split(" ")[0] && !["00:00:00", "03:00:00"].includes(_item.dt_txt.split(" ")[1]))
+                                                .filter(_item => _item.dt_txt.split(" ")[0] === item.dt_txt.split(" ")[0])
                                                 .map((_item, _index)=> (
                                                     <div key={_index} className="forecastDay el">
                                                         <p>{(_item.dt_txt.split(" ")[1]).split(":")[0] + ":" + (_item.dt_txt.split(" ")[1]).split(":")[1]}</p>
