@@ -6,34 +6,28 @@ import searchIcon from './asstes/images/search.png';
 
 function App() {
   //const [location, setLocation] = useState('');
-
   const [weatherData, setWeatherResponse] = useState(null);
   const [forecastData, setForecastResponse] = useState(null);
   //const currentWeatherFetch = fetch('https://api.openweathermap.org/data/2.5/weather?lat=49.63326874075631&lon=20.473368663221848&appid=6276eea278f6f63ee4850b553409899c');
 
-  useEffect(() => {
-  if (weatherData) {
-    localStorage.setItem("weatherData", JSON.stringify(weatherData));
-  }
-}, [weatherData]);
+//   useEffect(() => {
+//   if (weatherData) {
+//     console.log(weatherData.name);
+//     localStorage.setItem("weatherData", JSON.stringify(weatherData.name));
+//   }
+// }, [weatherData]);
+
+// useEffect(() => {
+//   if (forecastData) {
+//     localStorage.setItem("forecastData", JSON.stringify(weatherData.name));
+//   }
+// }, [forecastData]);
+
 
 useEffect(() => {
-  if (forecastData) {
-    localStorage.setItem("forecastData", JSON.stringify(forecastData));
-  }
-}, [forecastData]);
-
-
-useEffect(() => {
-  const savedWeather = localStorage.getItem("weatherData");
-  const savedForecast = localStorage.getItem("forecastData");
-
-  if (savedWeather) {
-    setWeatherResponse(JSON.parse(savedWeather));
-  }
-
-  if (savedForecast) {
-    setForecastResponse(JSON.parse(savedForecast));
+  const loc = localStorage.getItem("location");
+  if (loc) {
+   HandleOnClick(loc); 
   }
 }, []);
 
@@ -47,6 +41,7 @@ useEffect(() => {
     // setLocation(newLocation);
     // console.log("Lokacja" + location)
     console.log("LATA JAK SKURWYSYN:" + newLocation);
+    localStorage.setItem("location", newLocation);
     const currentWeatherFetch = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${newLocation}&appid=6276eea278f6f63ee4850b553409899c&units=metric`);
     const currentForecastFetch = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${newLocation}&appid=6276eea278f6f63ee4850b553409899c&units=metric`);
   
